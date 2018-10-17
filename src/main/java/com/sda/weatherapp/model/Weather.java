@@ -4,12 +4,14 @@ public class Weather {
 
     private String cityName;
     private String iconUrl;
+    private String description;
     private double temperature;
     private double feelsLikeC;
 
-    public Weather(String cityName, String iconUrl, double temperature, double feelsLikeC) {
+    public Weather(String cityName, String iconUrl, String description, double temperature, double feelsLikeC) {
         this.cityName = cityName;
         this.iconUrl = iconUrl;
+        this.description = description;
         this.temperature = temperature;
         this.feelsLikeC = feelsLikeC;
     }
@@ -31,6 +33,14 @@ public class Weather {
 
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getTemperature() {
