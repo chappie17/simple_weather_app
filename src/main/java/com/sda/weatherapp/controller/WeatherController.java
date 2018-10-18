@@ -32,15 +32,30 @@ public class WeatherController {
     @FXML
     public void showWeather() {
         Weather weather = weatherService.showCityWeather(cityTextField.getText());
-        temperatureLabel.setText(String.valueOf(weather.getTemperature()));
-        temperatureFeelsLabel.setText(String.valueOf(weather.getFeelsLikeC()));
-        descriptionLabel.setText(weather.getDescription());
-        Image image = new Image("http:" + weather.getIconUrl(), true);
-        imageIcon.setImage(image);
-
+        imageIcon.setVisible(true);
+        if (weather.getCityName() == null){
+            descriptionLabel.setText("Not found!");
+            temperatureLabel.setText("");
+            temperatureFeelsLabel.setText("");
+            imageIcon.setVisible(false);
+        }else {
+            temperatureLabel.setText(String.valueOf(weather.getTemperature()));
+            temperatureFeelsLabel.setText(String.valueOf(weather.getFeelsLikeC()));
+            descriptionLabel.setText(weather.getDescription());
+            Image image = new Image("http:" + weather.getIconUrl(), true);
+            imageIcon.setImage(image);
+        }
     }
 
     public void setWeatherView(WeatherView weatherView) {
         this.weatherView = weatherView;
+    }
+
+    public WeatherService getWeatherService() {
+        return weatherService;
+    }
+
+    public void setWeatherService(WeatherService weatherService) {
+        this.weatherService = weatherService;
     }
 }

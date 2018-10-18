@@ -2,6 +2,7 @@ package com.sda.weatherapp.view;
 
 import com.sda.weatherapp.App;
 import com.sda.weatherapp.controller.WeatherController;
+import com.sda.weatherapp.model.WeatherService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -25,14 +26,14 @@ public class WeatherView {
         try {
             pane = loader.load();
             Scene scene = new Scene(pane);
-            stage.getScene();
+            stage.setScene(scene);
             stage.setTitle("Weather Application");
             stage.getIcons().add(new Image(App.class.getResourceAsStream("/icon.png")));
             stage.show();
 
             WeatherController weatherController;
             weatherController = loader.getController();
-            weatherController.setWeatherView(this);
+            weatherController.setWeatherService(new WeatherService());
         } catch (IOException e) {
             e.printStackTrace();
         }
